@@ -15,7 +15,14 @@ options(stremr.verbose=TRUE)
 AD = readRDS('sampleAD.rds')
 
 # ----------------------------------------------------------------------
-# Creating Treatment Nodes to use in intervened_TRT
+# Creating counterfactual node values to use in intervened_TRT
+# how should we set up these nodes to get the Hazard for Trt regmines of
+# interest? 
+# example: 
+#         Patient Stays only on TRT1 (PATH1==1):  
+#               (TRT1==1 & TRT2==0 & TRT3==0 & TRT4==0) 
+#         Patient Start with TRT2 then switch to TRT1, PATH3==1:
+#              (TRT1==1 & TRT2==1 & TRT3==0 & TRT4==0) 
 # ----------------------------------------------------------------------
 AD[, ("zero.set") := 0L]
 AD[, ("TRT1.set")  := 1L] 
