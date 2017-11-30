@@ -18,6 +18,14 @@ AD = readRDS('sampleAD.rds')
 # counterfactual regimen of interest are identifyied
 # by indicator varaibles PATH1- PATH5 to show if pateint is on 
 # dynamic regimen of interst or not
+# Creating counterfactual node values to use in intervened_TRT
+#
+# how should we set up these nodes to get the Hazard for Trt regmines of
+# interest? 
+# example: 
+#         Patient Stays only on TRTN==1 (PATH1==1):  
+#         Patient Start with TRT2 then switch to TRT1, PATH3==1:
+#              (TRTN==1 or TRTN==2)
 # ----------------------------------------------------------------------
 AD[, ("TRT1.set")  := 1L]
 AD[, ("TRT2.set")  := 2L]
